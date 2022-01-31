@@ -10,10 +10,16 @@ namespace DotNetWebApi.Controllers
     public class ValuesController : ApiController
     {
         // GET api/values
-        public IEnumerable<string> Get()
+        public HttpResponseMessage Get()
         {
-            return new string[] { "value1", "value2" };
+            var returnValue = new { key1 = "value1", key2 = "value2" };
+
+            return Request.CreateResponse(HttpStatusCode.OK, returnValue);
         }
+        //public IEnumerable<string> Get()
+        //{
+        //    return new string[] { "value1", "value2" };
+        //}
 
         // GET api/values/5
         public string Get(int id)
